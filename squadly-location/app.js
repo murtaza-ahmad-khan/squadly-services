@@ -3,6 +3,9 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
+// app config
+app.use(express.json());
+
 // Mount Routers
 app.use("/api/locations", require("./routes/locations"));
 

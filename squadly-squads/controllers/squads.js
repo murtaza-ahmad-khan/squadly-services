@@ -1,10 +1,12 @@
+const Squad = require("../models/Squad");
 /*
   @Desc     Create a Squad
   @Path     POST /api/squads
   @Access   Private
 */
-exports.createSquad = (req, res, next) => {
-  res.send("Squad Created");
+exports.createSquad = async (req, res, next) => {
+  await Squad.create(req.body);
+  res.status(201).json({ success: true, data: "Squad created successfully." });
 };
 
 /*
@@ -12,6 +14,7 @@ exports.createSquad = (req, res, next) => {
   @Path     GET /api/squads
   @Access   Private
 */
-exports.getSquads = (req, res, next) => {
-  res.send([]);
+exports.getSquads = async (req, res, next) => {
+  const squads = await Squad.find();
+  res.json({ success: true, data: squads });
 };
