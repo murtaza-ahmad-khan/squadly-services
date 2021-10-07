@@ -12,6 +12,7 @@ const squadSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  locationId: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Squad", squadSchema);

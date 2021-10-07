@@ -15,6 +15,15 @@ exports.createSquad = async (req, res, next) => {
   @Access   Private
 */
 exports.getSquads = async (req, res, next) => {
-  const squads = await Squad.find();
+  //NOTE: In a future we can create generic mongodb query
+  let query = req.query;
+  if (query?.locationId) {
+    query = {
+      locationId: {
+        $eq: query.locationId,
+      },
+    };
+  }
+  const squads = await Squad.find(query);
   res.json({ success: true, data: squads });
 };
