@@ -37,7 +37,7 @@ exports.getLocation = async (req, res, next) => {
 
   // Fetch squads by location Id
   const { data } = await axios.get(
-    "http://localhost:5001/api/squads?locationId=" + req.params.id
+    "http://localhost:5001/api/squadss?locationId=" + req.params.id
   );
 
   const location = { ...rows[0], squads: data.data };
