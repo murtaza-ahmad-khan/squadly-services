@@ -29,17 +29,17 @@ exports.getLocations = async (req, res, next) => {
   @Access   Private
 */
 exports.getLocation = async (req, res, next) => {
-  const [rows] = await Location.findById(req.params.id);
+  // const [rows] = await Location.findById(req.params.id);
 
-  if (!rows.length) {
-    return res.status(404).json({ success: false, data: "Location not found" });
-  }
+  // if (!rows.length) {
+  //   return res.status(404).json({ success: false, data: "Location not found" });
+  // }
 
   // Fetch squads by location Id
   const { data } = await axios.get(
-    "http://localhost:5001/api/squadss?locationId=" + req.params.id
+    "http://squadly_squads:5001/api/squads?locationId=" + req.params.id
   );
 
-  const location = { ...rows[0], squads: data.data };
-  res.json({ success: true, data: location });
+  // const location = { ...rows[0], squads: data.data };
+  res.json({ success: true, data: data.data });
 };
