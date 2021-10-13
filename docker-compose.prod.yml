@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  squadly_location:
+    build:
+      context: ./squadly-location
+      args:
+        NODE_ENV: production
+    environment:
+      - NODE_ENV=production
+    command: npm start
+  squadly_squads:
+    build:
+      context: ./squadly-squads
+      args:
+        NODE_ENV: production
+    environment:
+      - NODE_ENV=production
+    command: npm start

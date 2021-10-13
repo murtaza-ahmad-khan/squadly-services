@@ -3,16 +3,20 @@ version: "3.8"
 services:
   squadly_location:
     build: ./squadly-location
+    ports:
+      - 5000:5000
     env_file:
       - ./squadly-location/.env
-
+    volumes:
+      - ./squadly-location:/app
   squadly_squads:
     build: ./squadly-squads
+    ports:
+      - 5001:5001
     env_file:
       - ./squadly-squads/.env
-    environment:
-      - DB_URI=mongodb://mongo_db/squadly-squads
-
+    volumes:
+      - ./squadly-squads:/app
   mongo_db:
     image: mongo:4.0-xenial
     ports:

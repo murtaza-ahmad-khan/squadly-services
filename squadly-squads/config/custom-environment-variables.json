@@ -1,0 +1,6 @@
+{
+  "PORT": "PORT",
+  "db": {
+    "URI": "DB_URI"
+  }
+}

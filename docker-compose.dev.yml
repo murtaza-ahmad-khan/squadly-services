@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  squadly_location:
+    build:
+      context: ./squadly-location
+      args:
+        NODE_ENV: development
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+    volumes:
+      - ./squadly-location:/app
+      - /app/node_modules
+  squadly_squads:
+    build:
+      context: ./squadly-squads
+      args:
+        NODE_ENV: development
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./squadly-squads:/app
+    command: npm run dev
